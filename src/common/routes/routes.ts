@@ -17,8 +17,8 @@ const taskService: TaskService = new TaskService();
 const taskController: TaskController = new TaskController(taskService);
 
 
-router.get('/users/:email', userController.getUser.bind(userController));
 router.post('/users', validationPipe(CreateUserDto), userController.addUser.bind(userController));
+router.get('/users/:email', userController.getUser.bind(userController));
 
 router.get('/tasks', authenticateToken(envs.jwtSecretKey), taskController.getTaskList.bind(taskController));
 router.post('/tasks', authenticateToken(envs.jwtSecretKey), taskController.addTask.bind(taskController));
