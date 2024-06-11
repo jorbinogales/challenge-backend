@@ -26,6 +26,9 @@ app.use('/', router);
 app.use(errorHandlerMiddleware);
 
 
+app.use('/', (req, res, next) => {
+    res.status(403).send('Access Denied');
+});
 
 app.listen(PORT, () => {
     console.log("Server running at PORT: ", PORT);
